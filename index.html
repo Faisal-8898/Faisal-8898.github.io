@@ -1,188 +1,26 @@
 <!doctype html>
 <html lang="en">
-<head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Faisal Ahmed</title>
-  <meta name="description" content="Faisal Ahmed, computer science researcher working on IoT systems, edge AI and security. B.Sc. in CSE, East West University, Dhaka.">
-  <meta name="author" content="Faisal Ahmed">
-  <meta property="og:title" content="Faisal Ahmed">
-  <meta property="og:description" content="IoT systems, edge AI and security.">
-  <meta property="og:type" content="website">
-  <meta property="og:url" content="https://faisalahmedcs.me/">
-  <meta property="og:image" content="https://faisalahmedcs.me/assets/faisal.jpg">
-  <meta name="theme-color" content="#fbfbfd" media="(prefers-color-scheme: light)">
-  <meta name="theme-color" content="#000000" media="(prefers-color-scheme: dark)">
-  <link rel="canonical" href="https://faisalahmedcs.me/">
-  <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="styles.css">
-</head>
-<body>
-
-<header class="nav">
-  <div class="nav-inner">
-    <a class="nav-name" href="#top">Faisal Ahmed</a>
-    <nav aria-label="Sections">
-      <a href="#research">Research</a>
-      <a href="#publications">Publications</a>
-      <a href="#experience">Experience</a>
-      <a href="assets/cv.pdf" target="_blank" rel="noopener">CV</a>
-    </nav>
-  </div>
-</header>
-
-<main id="top">
-
-  <section class="hero">
-    <img class="portrait" src="assets/faisal.jpg" alt="Portrait of Faisal Ahmed" width="800" height="800">
-    <div class="hero-text">
-      <h1>Faisal Ahmed</h1>
-      <p class="tagline">IoT systems, edge AI and security.</p>
-      <p class="affil">B.Sc. in Computer Science and Engineering<br>East West University, Dhaka</p>
-      <ul class="links">
-        <li><a href="mailto:faaisal8898@gmail.com">Email</a></li>
-        <li><a href="https://scholar.google.com/citations?user=ryqQnJMAAAAJ" target="_blank" rel="noopener">Google Scholar</a></li>
-        <li><a href="https://github.com/Faisal-8898" target="_blank" rel="noopener">GitHub</a></li>
-        <li><a href="assets/cv.pdf" target="_blank" rel="noopener">CV</a></li>
-      </ul>
-    </div>
-  </section>
-
-  <section class="about reveal">
-    <p>I finished my B.Sc. in Computer Science and Engineering at East West University in May 2026, graduating with a CGPA of 3.73. My work sits between IoT systems, edge AI and security. I tend to build systems that run on real, constrained hardware and then measure how they behave, which has taken me from ESP32 testbeds to honeypots on the open Internet.</p>
-    <p>For my capstone, I worked on PAUMIoT under Dr. Hasan Mahmood Aminul Islam, where I built an ESP32 client that learns which protocol to use while a safety shield keeps it away from unsafe choices. Alongside this, I have been running an independent honeypot study of IoT attacks, which collected about 4.0 million events over 112 days. I am now looking for a thesis-based master's position starting in Fall 2027, especially in groups working on edge AI, IoT security or agentic AI.</p>
-  </section>
-
-  <section id="news" class="block reveal">
-    <h2>News</h2>
-    <ul class="news">
-      <li><span class="date">2026</span><span>Our paper on content freshness in CCN over delay-tolerant networks was submitted to NSysS 2026.</span></li>
-      <li><span class="date">2026</span><span>PAUMIoT was published at IEEE DCOSS-IoT 2026.</span></li>
-      <li><span class="date">May 2026</span><span>Graduated from East West University with a B.Sc. in Computer Science and Engineering.</span></li>
-      <li><span class="date">Apr 2026</span><span>SEFIoT was presented at IEEE QPAIN 2026 in Chittagong.</span></li>
-      <li><span class="date">Nov 2025</span><span>Our diabetes prediction paper was presented at IEEE BECITHCON 2025 in Dhaka.</span></li>
-    </ul>
-  </section>
-
-  <section id="research" class="block reveal">
-    <h2>Research</h2>
-    <div class="cards">
-      <article class="card">
-        <p class="eyebrow">Edge intelligence for IoT</p>
-        <h3>PAUMIoT</h3>
-        <p>A middleware that accepts MQTT, CoAP and HTTP on a single port and identifies the protocol from the first bytes of each flow. On the device, an ESP32 client uses a LinUCB contextual bandit to choose a protocol, while a safety shield falls back to a safe option when the battery or signal is low. Each decision takes under 50&nbsp;µs on the ESP32.</p>
-        <p class="meta">My part: the ESP32 client, the safety shield and the hardware testbed. IEEE DCOSS-IoT 2026.</p>
-      </article>
-      <article class="card">
-        <p class="eyebrow">IoT security measurement</p>
-        <h3>Passive attacker attribution</h3>
-        <p>I ran four honeypots on one cloud server for 112 days and collected about 4.0 million events from 29,052 IP addresses. The study asks whether attackers can be grouped by passive signals, such as SSH client fingerprints, passwords and command patterns, which stay the same even when attackers change their IP addresses.</p>
-        <p class="meta">Independent study. Journal paper in preparation.</p>
-      </article>
-      <article class="card">
-        <p class="eyebrow">Explainable machine learning</p>
-        <h3>Interpretable prediction</h3>
-        <p>In two group projects, we paired standard models with statistical tests and explanations. For early diabetes prediction, Random Forest reached 96.79% accuracy on 520 patient records, and LIME showed which symptoms drove each prediction. A second study combines ARIMA-LSTM forecasting with SHAP and LIME for retail inventory and pricing.</p>
-        <p class="meta">IEEE BECITHCON 2025. Engineering Reports, under review.</p>
-      </article>
-      <article class="card">
-        <p class="eyebrow">Networks and emulation</p>
-        <h3>SEFIoT and CCN freshness</h3>
-        <p>SEFIoT is a lightweight Python emulator that generates sensor traffic modelled on Dhaka, and it ran 20,000 sensors in about 0.16&nbsp;GB of memory. In a separate study, I extended The ONE simulator with a CCN layer to measure how often cached content in delay-tolerant networks is already out of date.</p>
-        <p class="meta">IEEE QPAIN 2026. NSysS 2026, submitted.</p>
-      </article>
-    </div>
-  </section>
-
-  <section id="publications" class="block reveal">
-    <h2>Publications</h2>
-
-    <h3 class="group">Conference papers</h3>
-    <ol class="pubs">
-      <li>
-        <p class="pub-title">Towards a protocol-agnostic universal middleware for IoT with edge intelligence</p>
-        <p class="pub-authors">H. M. A. Islam, M. M. R. Maharaz, <b>F. Ahmed</b>, M. F. H. Dipto, M. M. H. Shafin, M. Georgiades</p>
-        <p class="pub-venue"><i>IEEE DCOSS-IoT</i>, 2026 <a class="pill" href="https://doi.org/10.1109/DCOSS-IoT69657.2026.00046" target="_blank" rel="noopener">DOI</a></p>
-      </li>
-      <li>
-        <p class="pub-title">Emulating sensor profile towards IoT simulator development</p>
-        <p class="pub-authors">M. M. Rahman, <b>F. Ahmed</b>, M. F. H. Dipto, M. M. H. Shafin, S. M. N. Shahriar, P. Akibuzzaman, H. M. A. Islam</p>
-        <p class="pub-venue"><i>IEEE QPAIN</i>, Chittagong, 2026 <a class="pill" href="https://doi.org/10.1109/QPAIN69676.2026.11546398" target="_blank" rel="noopener">DOI</a></p>
-      </li>
-      <li>
-        <p class="pub-title">Interpretable machine learning for early diabetes prediction with statistical validation and explainable AI</p>
-        <p class="pub-authors">F. R. Sams, S. K. Supti, M. J. Ali, <b>F. Ahmed</b>, M. F. H. Dipto, R. Gani, M. B. N. Shuci, M. R. A. Rashid, S. H. Ripon</p>
-        <p class="pub-venue"><i>IEEE BECITHCON</i>, Dhaka, 2025 <a class="pill" href="https://doi.org/10.1109/BECITHCON69222.2025.11504208" target="_blank" rel="noopener">DOI</a></p>
-      </li>
-    </ol>
-
-    <h3 class="group">Under review</h3>
-    <ol class="pubs">
-      <li>
-        <p class="pub-title">An integrated explainable machine learning framework for demand forecasting, inventory planning, and dynamic pricing in retail supply chains</p>
-        <p class="pub-authors">R. Gani, F. R. Sams, <b>F. Ahmed</b>, Y. Salehin, M. S. Bhuiyan, M. F. H. Dipto, S. K. Supti, M. J. Ali</p>
-        <p class="pub-venue"><i>Engineering Reports</i> (Wiley), under review</p>
-      </li>
-      <li>
-        <p class="pub-title">Freshness before the cache: Measuring content staleness at ingress in CCN over delay-tolerant networks</p>
-        <p class="pub-authors">M. M. Rahman, <b>F. Ahmed</b>, M. F. H. Dipto, M. M. H. Shafin</p>
-        <p class="pub-venue"><i>NSysS</i>, 2026, submitted</p>
-      </li>
-    </ol>
-
-    <h3 class="group">In preparation</h3>
-    <ol class="pubs">
-      <li>
-        <p class="pub-title">PAUMIoT: Safety-shielded, federated, cost-aware transport adaptation for heterogeneous IoT</p>
-        <p class="pub-authors"><b>F. Ahmed</b>, M. M. R. Maharaz, M. F. H. Dipto, M. M. H. Shafin, M. Georgiades</p>
-      </li>
-      <li>
-        <p class="pub-title">Passive attribution of role-separated IoT attack ecosystems through orthogonal behavioral fingerprints</p>
-        <p class="pub-authors"><b>F. Ahmed</b>, N. Yeasmin, R. Hossen, M. Georgiades</p>
-      </li>
-    </ol>
-  </section>
-
-  <section id="experience" class="block reveal">
-    <h2>Experience</h2>
-    <ul class="timeline">
-      <li>
-        <div class="tl-head"><h3>Co-Founder &amp; Software Engineer</h3><span class="date">Jul 2025 – Present</span></div>
-        <p class="tl-org">Trelet, Dhaka</p>
-        <p>Built the payment and access-control parts of an e-commerce platform in Go and PostgreSQL. While auditing the code, I found a hard-coded secret that allowed a login bypass and removed it.</p>
-      </li>
-      <li>
-        <div class="tl-head"><h3>Full-stack Developer (Remote)</h3><span class="date">Oct – Dec 2025</span></div>
-        <p class="tl-org">RN Jobforce, Shropshire, England</p>
-        <p>Worked on the Django backend and built an interview module on the OpenAI API, which generates questions and gives candidates feedback during the session.</p>
-      </li>
-      <li>
-        <div class="tl-head"><h3>Software Engineering Intern</h3><span class="date">Apr – Sep 2025</span></div>
-        <p class="tl-org">Progress IT Solution, Dhaka</p>
-        <p>Wrote a C# video processor using FFmpeg and OpenCV, and a Windows tool for a cybersecurity client that automates domain registration and Group Policy setup.</p>
-      </li>
-      <li>
-        <div class="tl-head"><h3>Instructor</h3><span class="date">Oct 2023 – Mar 2024</span></div>
-        <p class="tl-org">Step to Backend, online sessions</p>
-        <p>Taught backend basics, mainly databases and how to deploy an app.</p>
-      </li>
-    </ul>
-  </section>
-
-  <section id="contact" class="block reveal">
-    <h2>Contact</h2>
-    <p class="contact">The best way to reach me is by email at <a href="mailto:faaisal8898@gmail.com">faaisal8898@gmail.com</a>.</p>
-  </section>
-
-</main>
-
-<footer class="footer">
-  <p>© 2026 Faisal Ahmed · Dhaka, Bangladesh</p>
-</footer>
-
-<script src="main.js"></script>
-</body>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Faisal Ahmed</title>
+    <meta name="description" content="Faisal Ahmed, computer science researcher working on IoT systems, edge AI and security. B.Sc. in CSE, East West University, Dhaka." />
+    <meta name="author" content="Faisal Ahmed" />
+    <meta property="og:title" content="Faisal Ahmed" />
+    <meta property="og:description" content="IoT systems, edge AI and security." />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://faisalahmedcs.me/" />
+    <meta property="og:image" content="https://faisalahmedcs.me/assets/faisal.jpg" />
+    <meta name="theme-color" content="#fcfbf8" />
+    <meta name="color-scheme" content="light" />
+    <link rel="canonical" href="https://faisalahmedcs.me/" />
+    <link rel="icon" href="/assets/favicon.svg" type="image/svg+xml" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  </head>
+  <body>
+    <div id="root"></div>
+    <script type="module" src="/src/main.jsx"></script>
+  </body>
 </html>

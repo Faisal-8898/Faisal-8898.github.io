@@ -1,0 +1,216 @@
+:root {
+  --bg: #fcfbf8;
+  --text: #1d1d1f;
+  --muted: #6e6e73;
+  --faint: #8e8e93;
+  --line: rgba(29, 29, 31, 0.09);
+  --accent: #0066cc;
+  --pill: rgba(0, 102, 204, 0.08);
+  --nav: rgba(252, 251, 248, 0.78);
+  --sans: -apple-system, BlinkMacSystemFont, "SF Pro Text", "Inter", "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  --display: -apple-system, BlinkMacSystemFont, "SF Pro Display", "Inter", "Segoe UI", Roboto, sans-serif;
+  color-scheme: light;
+}
+
+* { box-sizing: border-box; }
+
+html { scroll-behavior: smooth; scroll-padding-top: 72px; }
+
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--text);
+  font-family: var(--sans);
+  font-size: 17px;
+  line-height: 1.6;
+  letter-spacing: -0.011em;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+}
+
+a { color: var(--accent); text-decoration: none; transition: opacity 0.2s ease; }
+a:hover { opacity: 0.7; }
+
+h1, h2, h3 { font-family: var(--display); margin: 0; letter-spacing: -0.022em; }
+
+/* Navigation */
+.nav {
+  position: sticky;
+  top: 0;
+  z-index: 10;
+  background: transparent;
+  border-bottom: 1px solid transparent;
+  transition: background 0.3s ease, border-color 0.3s ease;
+}
+.nav.scrolled {
+  background: var(--nav);
+  -webkit-backdrop-filter: saturate(180%) blur(20px);
+  backdrop-filter: saturate(180%) blur(20px);
+  border-bottom-color: var(--line);
+}
+.nav-inner {
+  max-width: 960px;
+  margin: 0 auto;
+  padding: 0 24px;
+  height: 52px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.nav-name { color: var(--text); font-weight: 600; font-size: 15px; }
+.nav nav { display: flex; gap: 26px; }
+.nav nav a { color: var(--muted); font-size: 13px; transition: color 0.2s ease; }
+.nav nav a:hover, .nav nav a.active { color: var(--text); opacity: 1; }
+
+main { max-width: 960px; margin: 0 auto; padding: 0 24px; }
+
+/* Intro: photo on the left, description on the right */
+.intro {
+  display: grid;
+  grid-template-columns: 240px 1fr;
+  gap: 56px;
+  align-items: start;
+  padding: 88px 0 40px;
+}
+.intro-photo img {
+  display: block;
+  width: 100%;
+  height: auto;
+  aspect-ratio: 1;
+  object-fit: cover;
+  border-radius: 28px;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.04), 0 12px 32px rgba(0, 0, 0, 0.06);
+}
+.intro h1 { font-size: 44px; line-height: 1.1; font-weight: 700; }
+.tagline {
+  margin: 8px 0 22px;
+  font-size: 21px;
+  line-height: 1.35;
+  color: var(--muted);
+  letter-spacing: -0.018em;
+}
+.bio { margin: 0 0 14px; color: #333336; }
+.links {
+  list-style: none;
+  padding: 0;
+  margin: 22px 0 0;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px 22px;
+  font-size: 15px;
+  font-weight: 500;
+}
+
+/* Sections */
+.section {
+  border-top: 1px solid var(--line);
+  margin-top: 40px;
+  padding-top: 56px;
+}
+.section h2 { font-size: 30px; font-weight: 600; margin-bottom: 28px; }
+
+.news { list-style: none; margin: 0; padding: 0; }
+.news li {
+  display: grid;
+  grid-template-columns: 96px 1fr;
+  gap: 16px;
+  padding: 9px 0;
+  font-size: 16px;
+}
+.date {
+  color: var(--faint);
+  font-size: 14px;
+  font-variant-numeric: tabular-nums;
+  padding-top: 1px;
+}
+
+/* Research: plain rows, heading on the left, text on the right */
+.project {
+  display: grid;
+  grid-template-columns: 280px 1fr;
+  gap: 40px;
+  padding: 26px 0;
+  border-bottom: 1px solid var(--line);
+}
+.project:first-child { padding-top: 4px; }
+.project:last-child { border-bottom: 0; }
+.project h3 { font-size: 19px; font-weight: 600; line-height: 1.35; }
+.project-meta { margin: 8px 0 0; font-size: 13px; color: var(--faint); line-height: 1.5; }
+.project-body p { margin: 0; font-size: 16px; color: #333336; }
+.more { display: inline-block; margin-top: 10px; font-size: 15px; font-weight: 500; }
+
+/* Publications */
+.pub-group + .pub-group { margin-top: 32px; }
+.group {
+  font-size: 15px;
+  font-weight: 600;
+  color: var(--muted);
+  margin-bottom: 4px;
+  letter-spacing: -0.01em;
+}
+.pubs { margin: 0; padding: 0; list-style: none; }
+.pubs li { padding: 14px 0; border-bottom: 1px solid var(--line); }
+.pubs li:last-child { border-bottom: 0; }
+.pubs p { margin: 0; }
+.pub-title { font-weight: 600; font-size: 17px; line-height: 1.4; }
+.pub-authors { margin-top: 4px !important; color: var(--muted); font-size: 15px; }
+.pub-authors b { color: var(--text); font-weight: 600; }
+.pub-venue { margin-top: 4px !important; color: var(--muted); font-size: 15px; }
+.pill {
+  display: inline-block;
+  margin-left: 8px;
+  padding: 1px 10px;
+  border-radius: 980px;
+  background: var(--pill);
+  font-size: 12px;
+  font-weight: 600;
+  vertical-align: 1px;
+}
+
+/* Experience */
+.timeline { list-style: none; margin: 0; padding: 0; }
+.timeline li { padding: 0 0 26px; }
+.tl-head { display: flex; justify-content: space-between; align-items: baseline; gap: 16px; }
+.tl-head h3 { font-size: 17px; font-weight: 600; letter-spacing: -0.015em; }
+.tl-org { margin: 2px 0 6px; color: var(--muted); font-size: 15px; }
+.timeline p:last-child { margin: 0; font-size: 15px; color: #333336; }
+
+.contact { margin: 0; }
+
+.footer {
+  max-width: 960px;
+  margin: 72px auto 0;
+  padding: 24px 24px 48px;
+  color: var(--faint);
+  font-size: 12px;
+}
+.footer p { margin: 0; border-top: 1px solid var(--line); padding-top: 24px; }
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+}
+
+/* Tablets */
+@media (max-width: 860px) {
+  .project { grid-template-columns: 1fr; gap: 10px; }
+}
+
+/* Phones */
+@media (max-width: 680px) {
+  body { font-size: 16px; }
+  main, .nav-inner { padding: 0 16px; }
+  .nav-name { display: none; }
+  .nav-inner { justify-content: center; }
+  .nav nav { gap: 18px; }
+  .intro { grid-template-columns: 1fr; gap: 28px; padding: 48px 0 24px; }
+  .intro-photo { width: 140px; }
+  .intro-photo img { border-radius: 22px; }
+  .intro h1 { font-size: 34px; }
+  .tagline { font-size: 19px; margin-bottom: 18px; }
+  .section { padding-top: 44px; margin-top: 32px; }
+  .section h2 { font-size: 26px; margin-bottom: 20px; }
+  .news li { grid-template-columns: 1fr; gap: 0; padding: 8px 0; }
+  .tl-head { flex-direction: column; gap: 0; }
+  .footer { padding: 24px 16px 40px; }
+}
