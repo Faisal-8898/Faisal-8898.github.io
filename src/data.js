@@ -12,7 +12,7 @@ export const profile = {
     { label: 'CV', href: '/assets/cv.pdf' },
   ],
   bio: [
-    'I am a computer science graduate from East West University in Dhaka, where I finished my B.Sc. in May 2026 with a CGPA of 3.73. My work sits between IoT systems, edge AI and security. I tend to build systems that run on real, constrained hardware and then measure how they behave, which has taken me from ESP32 testbeds to honeypots on the open Internet.',
+    'I am a computer science graduate from East West University in Dhaka, where I finished my B.Sc. in May 2026 with a CGPA of 3.73. My work sits between IoT systems, edge AI and security. Most of my projects involve building a system on real hardware and then measuring how it performs.',
     'For my capstone, I worked on PAUMIoT under Dr. Hasan Mahmood Aminul Islam, where I built an ESP32 client that learns which protocol to use while a safety shield keeps it away from unsafe choices. Alongside this, I have been running an independent honeypot study of IoT attacks. I am now looking for a thesis-based master’s position starting in Fall 2027, especially in groups working on edge AI, IoT security or agentic AI.',
   ],
 }
@@ -27,24 +27,24 @@ export const news = [
 
 export const research = [
   {
-    title: 'Learning which protocol to use on IoT devices',
+    title: 'Adaptive protocol selection for IoT devices',
     meta: 'PAUMIoT · IEEE DCOSS-IoT 2026',
-    text: 'Most IoT platforms fix the protocol at design time, although the best choice often changes with battery level and network quality. In PAUMIoT, the gateway accepts MQTT, CoAP and HTTP on one port, while my part was the ESP32 client, which learns which protocol to use with a small contextual bandit. A safety shield sits in front of the learner, so the device falls back to a safe protocol whenever the battery or signal drops too low.',
+    text: 'Most IoT platforms fix the protocol at design time, although the best choice often changes with battery level and network quality. In PAUMIoT, the gateway accepts MQTT, CoAP and HTTP on one port, while my part was the ESP32 client, which learns which protocol to use with a small contextual bandit. A safety shield makes the device fall back to a safe protocol whenever the battery or signal drops too low.',
     link: { label: 'Paper', href: 'https://doi.org/10.1109/DCOSS-IoT69657.2026.00046' },
   },
   {
-    title: 'Telling IoT attackers apart when their IPs keep changing',
+    title: 'Attacker attribution from honeypot data',
     meta: 'Independent study · journal paper in preparation',
     text: 'Attackers change IP addresses often, which makes it hard to tell whether two attacks come from the same group. To study this, I ran four honeypots on a cloud server for 112 days and collected about 4.0 million events. I am now looking at signals that tend to stay the same across addresses, such as SSH client fingerprints, passwords and command scripts, and using them to group attackers.',
   },
   {
-    title: 'Predictions that people can check',
+    title: 'Explainable machine learning',
     meta: 'IEEE BECITHCON 2025 · Engineering Reports, under review',
-    text: 'In medical and business settings, a prediction is rarely useful unless people can see why the model made it. With a group of students at East West University, I worked on two studies that pair standard models with statistical tests and LIME or SHAP explanations, one for early diabetes prediction and one for retail demand and pricing.',
+    text: 'With a group of students at East West University, I worked on two studies that pair standard models with statistical tests and LIME or SHAP explanations, one for early diabetes prediction and one for retail demand and pricing.',
     link: { label: 'Paper', href: 'https://doi.org/10.1109/BECITHCON69222.2025.11504208' },
   },
   {
-    title: 'Testing networks without a large testbed',
+    title: 'IoT emulation and network measurement',
     meta: 'SEFIoT · IEEE QPAIN 2026 · NSysS 2026, submitted',
     text: 'Testing IoT systems at scale is difficult when there is no large testbed and simulated traffic looks unrealistic. SEFIoT is a lightweight emulator that generates sensor data modelled on Dhaka, and it can run thousands of virtual sensors on one machine. In a related study, I extended The ONE simulator to measure how often content cached in delay-tolerant networks is already out of date when it is served.',
     link: { label: 'Paper', href: 'https://doi.org/10.1109/QPAIN69676.2026.11546398' },
@@ -110,7 +110,7 @@ export const experience = [
     role: 'Co-Founder & Software Engineer',
     org: 'Trelet, Dhaka',
     date: 'Jul 2025 – Present',
-    text: 'Built the payment and access-control parts of an e-commerce platform in Go and PostgreSQL. While auditing the code, I found a hard-coded secret that allowed a login bypass and removed it.',
+    text: 'Built the payment and access-control parts of an e-commerce platform in Go and PostgreSQL.',
   },
   {
     role: 'Full-stack Developer (Remote)',
