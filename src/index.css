@@ -198,19 +198,37 @@ main { max-width: 960px; margin: 0 auto; padding: 0 24px; }
 
 /* Phones */
 @media (max-width: 680px) {
-  body { font-size: 16px; }
-  main, .nav-inner { padding: 0 16px; }
-  .nav-name { display: none; }
-  .nav-inner { justify-content: center; }
-  .nav nav { gap: 18px; }
-  .intro { grid-template-columns: 1fr; gap: 28px; padding: 48px 0 24px; }
-  .intro-photo { width: 140px; }
-  .intro-photo img { border-radius: 22px; }
-  .intro h1 { font-size: 34px; }
-  .tagline { font-size: 19px; margin-bottom: 18px; }
-  .section { padding-top: 44px; margin-top: 32px; }
-  .section h2 { font-size: 26px; margin-bottom: 20px; }
-  .news li { grid-template-columns: 1fr; gap: 0; padding: 8px 0; }
+  /* Sizes follow Apple's iOS text styles: body 17, subheadline 15, footnote 13 */
+  body { font-size: 17px; line-height: 1.55; }
+  main, .nav-inner { padding: 0 20px; }
+  .nav-inner { height: 48px; }
+  .nav-name { font-size: 16px; }
+  .nav nav { gap: 16px; }
+  .nav nav a { font-size: 14px; }
+  .nav nav a[href="#experience"] { display: none; }
+  .intro { grid-template-columns: 1fr; gap: 24px; padding: 40px 0 16px; }
+  .intro-photo { width: 120px; }
+  .intro-photo img { border-radius: 24px; }
+  .intro h1 { font-size: 34px; line-height: 1.15; }
+  .tagline { font-size: 20px; margin: 6px 0 20px; }
+  .bio { font-size: 17px; line-height: 1.6; }
+  .links { font-size: 16px; gap: 10px 20px; margin-top: 20px; }
+  .section { padding-top: 40px; margin-top: 32px; }
+  .section h2 { font-size: 28px; margin-bottom: 18px; }
+  .news li { grid-template-columns: 1fr; gap: 2px; padding: 10px 0; font-size: 17px; }
+  .date { font-size: 13px; }
+  .project { padding: 22px 0; }
+  .project h3 { font-size: 20px; }
+  .project-meta { font-size: 13px; margin-top: 4px; }
+  .project-body p { font-size: 17px; }
+  .more { font-size: 16px; }
+  .group { font-size: 15px; }
+  .pub-title { font-size: 17px; }
+  .pub-authors, .pub-venue { font-size: 15px; }
+  .pill { font-size: 13px; padding: 2px 10px; }
   .tl-head { flex-direction: column; gap: 0; }
-  .footer { padding: 24px 16px 40px; }
+  .tl-head h3 { font-size: 17px; }
+  .tl-org { font-size: 15px; }
+  .timeline p:last-child { font-size: 16px; }
+  .footer { padding: 24px 20px 40px; font-size: 13px; }
 }
