@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react'
-import { LazyMotion, domAnimation, m as motion, MotionConfig } from 'motion/react'
-import { profile, news, research, publications, experience } from './data.js'
+import { LazyMotion, domAnimation, m as motion, MotionConfig, AnimatePresence } from 'motion/react'
+import { profile, news, ongoing, research, publications, experience } from './data.js'
 
 const ease = [0.22, 0.61, 0.36, 1]
 
@@ -52,7 +52,7 @@ function Nav() {
   return (
     <header className={`nav ${scrolled ? 'scrolled' : ''}`}>
       <div className="nav-inner">
-        <a className="nav-name" href="#top">{profile.name}</a>
+        <a className="nav-name" href="#top"><span className="name-full">{profile.name}</span><span className="name-short" aria-hidden="true">F. Ahmed</span></a>
         <nav aria-label="Sections">
           {item('research', 'Research')}
           {item('publications', 'Publications')}
@@ -61,6 +61,38 @@ function Nav() {
         </nav>
       </div>
     </header>
+  )
+}
+
+// A project heading that opens into its full story when clicked.
+function Story({ item }) {
+  const [open, setOpen] = useState(false)
+  const id = `story-${item.title.replace(/\W+/g, '-').toLowerCase()}`
+  return (
+    <article className={`story ${open ? 'open' : ''}`}>
+      <button className="story-head" aria-expanded={open} aria-controls={id} onClick={() => setOpen(!open)}>
+        <span className="story-title">{item.title}</span>
+        <span className="project-meta">{item.meta}</span>
+        <span className="story-teaser">{item.teaser}</span>
+        <span className="story-toggle">{open ? 'Close the story' : 'Read the story'} <span aria-hidden="true">{open ? '\u2191' : '\u2193'}</span></span>
+      </button>
+      <AnimatePresence initial={false}>
+        {open && (
+          <motion.div
+            id={id}
+            className="story-body"
+            initial={{ height: 0, opacity: 0 }}
+            animate={{ height: 'auto', opacity: 1 }}
+            exit={{ height: 0, opacity: 0 }}
+            transition={{ duration: 0.45, ease }}
+          >
+            <div className="story-text">
+              {item.story.map((p, i) => <p key={i}>{p}</p>)}
+            </div>
+          </motion.div>
+        )}
+      </AnimatePresence>
+    </article>
   )
 }
 
@@ -85,7 +117,7 @@ export default function App() {
           transition={{ duration: 0.9, ease }}
         >
           <div className="intro-photo">
-            <img src="/assets/faisal.jpg" alt="Portrait of Faisal Ahmed" width="800" height="800" />
+            <img src="/assets/faisal.jpg" alt="Portrait of Faisal Ahmed" width="560" height="700" />
           </div>
           <div className="intro-text">
             <h1>{profile.name}</h1>
@@ -107,6 +139,10 @@ export default function App() {
               <li key={i}><span className="date">{n.date}</span><span>{n.text}</span></li>
             ))}
           </ul>
+        </Section>
+
+        <Section id="ongoing" title="Ongoing Work">
+          {ongoing.map((o) => <Story key={o.title} item={o} />)}
         </Section>
 
         <Section id="research" title="Research">
