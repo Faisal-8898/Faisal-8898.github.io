@@ -384,3 +384,5 @@ main { max-width: 900px; margin: 0 auto; padding: 0 24px; }
   .intro h1 { font-size: 30px; }
   .tagline { font-size: 17px; }
 }
+.pill.current { margin-left: 10px; font-size: 13px; vertical-align: middle; }
+.position { margin: -6px 0 16px; font-variant: small-caps; letter-spacing: 0.04em; color: var(--accent, #7b2d1e); }

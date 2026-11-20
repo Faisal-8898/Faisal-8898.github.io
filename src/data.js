@@ -2,7 +2,8 @@
 
 export const profile = {
   name: 'Faisal Ahmed',
-  tagline: 'IoT systems, edge AI and security',
+  tagline: 'IoT and embedded systems, edge AI and security',
+  position: 'Research Assistant, East West University, Dhaka',
   affiliation: 'B.Sc. in Computer Science and Engineering, East West University, Dhaka',
   email: 'faaisal8898@gmail.com',
   links: [
@@ -12,12 +13,13 @@ export const profile = {
     { label: 'CV', href: '/assets/cv.pdf' },
   ],
   bio: [
-    'I am a computer science graduate from East West University in Dhaka, where I finished my B.Sc. in May 2026 with a CGPA of 3.73. My work sits between IoT systems, edge AI and security. Most of my projects involve building a system on real hardware and then measuring how it performs.',
-    'For my capstone, I worked on PAUMIoT under Dr. Hasan Mahmood Aminul Islam, where I built an ESP32 client that learns which protocol to use while a safety shield keeps it away from unsafe choices. Alongside this, I have been running an independent honeypot study of IoT attacks. I am now looking for a thesis-based master’s position starting in Fall 2027, especially in groups working on edge AI, IoT security or agentic AI.',
+    'I recently graduated in CSE from East West University, Dhaka, with a CGPA of 3.73. I enjoy building systems on real devices, making them learn and decide under real limits, and then measuring how they actually behave, mostly in IoT, edge AI and security.',
+    'My main work is PAUMIoT (IEEE DCOSS-IoT 2026), where I built the ESP32 side that learns which protocol to use under safety rules, and I am now leading its journal extension. Out of my own curiosity about where IoT attacks come from, I also ran a honeypot study. Since November 2026, I have been working as a **[Research Assistant](#experience)** on an EEG project at East West University. I am looking for a thesis-based master’s position for Fall 2027.',
   ],
 }
 
 export const news = [
+  { date: 'Nov 2026', text: 'Joined an EWU-funded EEG project on anxiety and depression as a **[Research Assistant](#experience)**.' },
   { date: '2026', text: 'Our paper on content freshness in CCN over delay-tolerant networks was submitted to NSysS 2026.' },
   { date: '2026', text: 'PAUMIoT was published at IEEE DCOSS-IoT 2026.' },
   { date: 'May 2026', text: 'Graduated from East West University with a B.Sc. in Computer Science and Engineering.' },
@@ -28,14 +30,14 @@ export const news = [
 export const ongoing = [
   {
     title: 'PAUMIoT, from a conference paper to a journal system',
-    meta: 'Journal paper in preparation · builds on IEEE DCOSS-IoT 2026',
+    meta: 'Journal paper in preparation for IEEE TNSM · builds on IEEE DCOSS-IoT 2026',
     teaser: 'An IoT device that chooses its own protocol as its battery and network change, while a safety shield keeps the learning in check.',
     story: [
       'PAUMIoT started from a simple problem that I kept seeing in IoT projects. Most platforms ask the developer to choose one protocol at design time, although the best choice tends to change once a device is running in the field. For example, MQTT can use less energy than HTTP when a device sends many messages, while CoAP is usually cheaper when it only reports a few times per minute. As a result, a device on a weak battery or a noisy Wi-Fi link is likely to be using the wrong protocol for much of its life.',
       'Our first step was a gateway written in C that accepts MQTT, CoAP and HTTP on a single port. It reads only the first few bytes of a new connection to decide which protocol is arriving, which keeps detection cheap, and it then turns every message into one common format so that the rest of the system does not need to care where it came from. In our tests, this added around 40 to 60 microseconds per message and handled more than 12,000 messages per second at 1 KB. When libcoap began dropping most packets at 20 messages per second, the gateway queued them instead, delivering all of them at the cost of about 130 ms of extra latency.',
       'My own part was the device side. I wrote a small C library for the ESP32 which reads the battery level, signal strength, congestion, message priority, payload size and recent latency, and then chooses a protocol with a LinUCB contextual bandit. Because a learning agent can make poor choices while it is still exploring, I placed a safety shield in front of it. The shield has four rules, which send the device to CoAP when the battery is critical, to MQTT when the signal is very weak, to MQTT with QoS 2 for urgent messages, and to HTTP when a large payload has a good link. Only when none of these rules apply does the bandit decide, and the forced choices are kept out of its training so that it learns only from its own decisions. A small decision tree handles the cold start, while each decision takes under 50 microseconds on the device.',
       'In a 60-second test with 15% packet loss and more than 50 ms of jitter, the client moved from HTTP to MQTT, which cut latency from about 14 ms to 6 ms, and it moved back once the link recovered, while delivery stayed between 99 and 100%. These results were published at IEEE DCOSS-IoT 2026.',
-      'However, the conference paper covers only one gateway and a short test. I am now extending the work into a journal paper, where several gateways can share what their devices learn instead of each one starting from zero, and where the reward also accounts for cost. We also plan to add MQTT-SN, LwM2M and WebSocket, and to train a stronger policy offline before distilling it into rules small enough for a microcontroller.',
+      'However, the conference paper covers only one gateway and a short test. I am now leading a journal extension, where we did 194 live runs. At first we thought there was no switching cost, until we found that it had one, so I measured it and added it to the learner, and devices then switched only when it was worth it. We also tested whether new devices can learn faster from what older ones in the fleet already learned. Currently, I am running the experiments again on a bigger ESP32 testbed that I developed myself, with energy measured on each board.',
     ],
   },
   {
@@ -55,9 +57,9 @@ export const ongoing = [
 
 export const research = [
   {
-    title: 'Adaptive protocol selection for IoT devices',
+    title: 'Adaptive protocol selection on real IoT hardware',
     meta: 'PAUMIoT · IEEE DCOSS-IoT 2026',
-    text: 'Most IoT platforms fix the protocol at design time, although the best choice often changes with battery level and network quality. In PAUMIoT, the gateway accepts MQTT, CoAP and HTTP on one port, while my part was the ESP32 client, which learns which protocol to use with a small contextual bandit. A safety shield makes the device fall back to a safe protocol whenever the battery or signal drops too low.',
+    text: 'Most IoT platforms fix the protocol at design time, although the best choice often changes with battery level and network quality. In PAUMIoT, the gateway accepts MQTT, CoAP and HTTP on one port, while my part was the ESP32 client, which learns which protocol to use with a small contextual bandit. A safety shield makes the device fall back to a safe protocol whenever the battery or signal drops too low. For the journal version, I developed a bigger ESP32 testbed with energy measured on each board.',
     link: { label: 'Paper', href: 'https://doi.org/10.1109/DCOSS-IoT69657.2026.00046' },
   },
   {
@@ -122,7 +124,7 @@ export const publications = [
     group: 'In preparation',
     items: [
       {
-        title: 'PAUMIoT: Safety-shielded, federated, cost-aware transport adaptation for heterogeneous IoT',
+        title: 'Switching-cost-aware runtime adaptation and fleet learning for protocol-agnostic IoT middleware',
         authors: ['F. Ahmed', 'M. M. R. Maharaz', 'M. F. H. Dipto', 'M. M. H. Shafin', 'M. Georgiades'],
       },
       {
@@ -134,6 +136,14 @@ export const publications = [
 ]
 
 export const experience = [
+  {
+    role: 'Research Assistant',
+    current: true,
+    org: 'East West University Center for Research and Training (EWUCRT), Dhaka',
+    date: 'Nov 2026 – Present',
+    text: '**EEG project on early detection and risk stratification of anxiety and depression**, led by Prof. Dr. Ahmed Wasif Reza. The project is just starting, and my role is to set up and calibrate the 32-channel wireless EEG system, check signal quality during recording, and run the participant sessions, from consent and questionnaires to stimulus presentation with event marking. I am also helping with the overall project work, starting with the ethics and protocol documents.',
+    link: { label: 'Project abstract', href: 'https://crt.ewubd.edu/sites/default/files/attachment/2026-03/Abstract.pdf' },
+  },
   {
     role: 'Co-Founder & Software Engineer',
     org: 'Trelet, Dhaka',
@@ -156,6 +166,6 @@ export const experience = [
     role: 'Instructor',
     org: 'Step to Backend, online sessions',
     date: 'Oct 2023 – Mar 2024',
-    text: 'Taught backend basics, mainly databases and how to deploy an app.',
+    text: 'Taught backend systems, mainly databases and how to deploy an app.',
   },
 ]

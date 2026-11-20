@@ -2,6 +2,16 @@ import { useEffect, useState } from 'react'
 import { LazyMotion, domAnimation, m as motion, MotionConfig, AnimatePresence } from 'motion/react'
 import { profile, news, ongoing, research, publications, experience } from './data.js'
 
+// **text** in data.js renders as bold
+function Rich({ text }) {
+  // also supports [label](url) links inside bold or plain text
+  const linkify = (t, k) => t.split(/(\[[^\]]+\]\([^)]+\))/).map((seg, j) => {
+    const m = seg.match(/^\[([^\]]+)\]\(([^)]+)\)$/)
+    return m ? <a key={`${k}-${j}`} href={m[2]} target={m[2].startsWith('http') ? '_blank' : undefined} rel="noopener">{m[1]}</a> : seg
+  })
+  return text.split('**').map((part, i) => (i % 2 ? <strong key={i}>{linkify(part, i)}</strong> : linkify(part, i)))
+}
+
 const ease = [0.22, 0.61, 0.36, 1]
 
 // Sections fade up a few pixels the first time they scroll into view.
@@ -122,7 +132,8 @@ export default function App() {
           <div className="intro-text">
             <h1>{profile.name}</h1>
             <p className="tagline">{profile.tagline}</p>
-            {profile.bio.map((p, i) => <p key={i} className="bio">{p}</p>)}
+            {profile.position && <p className="position">{profile.position}</p>}
+            {profile.bio.map((p, i) => <p key={i} className="bio"><Rich text={p} /></p>)}
             <ul className="links">
               {profile.links.map((l) => (
                 <li key={l.label}>
@@ -136,7 +147,7 @@ export default function App() {
         <Section id="news" title="News">
           <ul className="news">
             {news.map((n, i) => (
-              <li key={i}><span className="date">{n.date}</span><span>{n.text}</span></li>
+              <li key={i}><span className="date">{n.date}</span><span><Rich text={n.text} /></span></li>
             ))}
           </ul>
         </Section>
@@ -190,9 +201,10 @@ export default function App() {
           <ul className="timeline">
             {experience.map((e) => (
               <li key={e.role}>
-                <div className="tl-head"><h3>{e.role}</h3><span className="date">{e.date}</span></div>
+                <div className="tl-head"><h3>{e.role}{e.current && <span className="pill current">current</span>}</h3><span className="date">{e.date}</span></div>
                 <p className="tl-org">{e.org}</p>
-                <p>{e.text}</p>
+                <p><Rich text={e.text} /></p>
+                {e.link && <a className="more" href={e.link.href} target="_blank" rel="noopener">{e.link.label} <span aria-hidden="true">&rsaquo;</span></a>}
               </li>
             ))}
           </ul>
